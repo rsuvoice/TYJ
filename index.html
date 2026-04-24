@@ -8,16 +8,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Kanit:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
-        body { 
-            font-family: 'Kanit', sans-serif; 
-            background-color: #FDFBF7;
+        body, html {
             margin: 0;
-            overflow-x: hidden;
+            padding: 0;
+            height: 100%;
+            font-family: 'Kanit', sans-serif;
+            background-color: #000;
         }
+
         .font-montserrat { font-family: 'Montserrat', sans-serif; }
 
-        /* พื้นหลังที่เป็น Artwork */
-        .bg-artwork {
+        /* พื้นหลัง Artwork แบบเต็มหน้าจอ */
+        .bg-full-artwork {
             position: fixed;
             top: 0;
             left: 0;
@@ -26,66 +28,82 @@
             background-image: url('https://drive.google.com/thumbnail?id=1QnXTVXuiiGDdvVwrYpQNS3mTen8Zp78W&sz=w1000');
             background-size: cover;
             background-position: center;
-            opacity: 0.15; /* ปรับความเข้มจางของพื้นหลังที่นี่ */
-            filter: blur(5px); /* เพิ่มความเบลอเล็กน้อยเพื่อให้ตัวหนังสือเด่น */
+            background-repeat: no-repeat;
             z-index: -1;
         }
 
-        .jazz-gradient {
-            background: linear-gradient(135deg, #0076BE 0%, #3AB5E5 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Overlay เพื่อให้อ่านข้อความง่ายขึ้น */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.4); /* ปรับความเข้มจางของรูปพื้นหลังที่นี่ (0.4 = จาง 40%) */
+            z-index: -1;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
+        /* Navigation Bar Strip */
+        .nav-strip {
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 118, 190, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 118, 190, 0.4);
         }
     </style>
 </head>
 <body class="text-slate-900">
 
-    <div class="bg-artwork"></div>
+    <div class="bg-full-artwork"></div>
+    <div class="bg-overlay"></div>
 
-    <nav class="flex justify-between items-center px-6 md:px-12 py-8 max-w-7xl mx-auto relative z-10">
-        <img src="https://drive.google.com/thumbnail?id=1-s-RY3BlkvRESeHHcH9fa3EjJb4NsbJO&sz=w1000" alt="TYJ Logo" class="h-12 md:h-16">
-        <button class="font-montserrat font-extrabold text-sm bg-[#0076BE] text-white px-8 py-3 rounded-full hover:shadow-2xl transition duration-300">
-            TICKETS
-        </button>
-    </nav>
-
-    <main class="max-w-7xl mx-auto px-6 md:px-12 pt-10 pb-24 relative z-10">
-        <div class="flex flex-col md:flex-row items-center gap-12">
+    <header class="nav-strip sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <img src="https://drive.google.com/thumbnail?id=1-s-RY3BlkvRESeHHcH9fa3EjJb4NsbJO&sz=w1000" alt="TYJ Logo" class="h-10 md:h-12">
             
-            <div class="md:w-1/2 text-center md:text-left">
-                <h2 class="font-montserrat font-extrabold text-[#0076BE] tracking-[0.3em] text-xs mb-4 uppercase">Youth Music Movement</h2>
-                <h1 class="font-montserrat font-extrabold text-6xl md:text-8xl leading-none mb-8">
-                    THAI <br> <span class="jazz-gradient">YOUTH</span> <br> JAZZ
-                </h1>
-                <p class="text-slate-600 text-lg md:text-xl max-w-md mb-10 font-light">
-                    เมื่อศิลปะและดนตรีแจ๊สโคจรมาพบกัน ในพื้นที่สร้างสรรค์ของเยาวชนรุ่นใหม่
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start font-montserrat">
-                    <a href="#" class="bg-slate-900 text-white px-10 py-5 rounded-2xl font-extrabold hover:bg-[#0076BE] transition shadow-xl text-center">
-                        SEE PROGRAM
-                    </a>
-                </div>
+            <div class="hidden md:flex gap-8 font-montserrat font-extrabold text-[12px] tracking-widest text-slate-600">
+                <a href="#" class="hover:text-[#0076BE] transition">PROGRAM</a>
+                <a href="#" class="hover:text-[#0076BE] transition">ARTISTS</a>
+                <a href="#" class="hover:text-[#0076BE] transition">ABOUT</a>
             </div>
 
-            <div class="md:w-1/2">
-                <div class="glass-card p-4 rounded-3xl shadow-2xl rotate-2 hover:rotate-0 transition duration-500">
-                    <img src="https://drive.google.com/thumbnail?id=1QnXTVXuiiGDdvVwrYpQNS3mTen8Zp78W&sz=w1000" 
-                         alt="Main Poster" 
-                         class="rounded-2xl w-full h-auto shadow-inner">
-                </div>
-            </div>
+            <button class="font-montserrat font-extrabold text-xs bg-[#0076BE] text-white px-6 py-2.5 rounded-full cta-button">
+                TICKETS
+            </button>
+        </div>
+    </header>
 
+    <main class="max-w-7xl mx-auto px-6 min-h-[80vh] flex items-center justify-center text-center">
+        <div class="bg-white/60 backdrop-blur-md p-10 md:p-20 rounded-[40px] shadow-2xl max-w-3xl border border-white/50">
+            <p class="font-montserrat font-extrabold text-[#0076BE] tracking-[0.4em] text-sm mb-4 uppercase">
+                Welcome to
+            </p>
+            <h2 class="font-montserrat font-extrabold text-4xl md:text-6xl mb-6 leading-tight">
+                THE FUTURE OF <br> THAI JAZZ
+            </h2>
+            <p class="text-slate-700 text-lg md:text-xl mb-10 font-light">
+                สัมผัสพลังดนตรีจากเยาวชนทั่วประเทศในงานเทศกาลที่สนุกที่สุดของปี
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#" class="font-montserrat font-extrabold bg-slate-900 text-white px-10 py-4 rounded-2xl cta-button">
+                    EXPLORE FESTIVAL
+                </a>
+            </div>
         </div>
     </main>
 
-    <footer class="text-center py-12 relative z-10">
-        <p class="font-montserrat font-extrabold text-[10px] tracking-[0.5em] text-slate-400">© 2024 THAI YOUTH JAZZ</p>
+    <footer class="py-10 text-center">
+        <p class="font-montserrat font-extrabold text-[10px] tracking-[0.5em] text-slate-500">© 2024 THAI YOUTH JAZZ</p>
     </footer>
 
 </body>
