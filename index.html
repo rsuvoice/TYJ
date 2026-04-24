@@ -3,127 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thai Youth Jazz | Official Experience</title>
+    <title>Thai Youth Jazz | Official</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Kanit:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
         body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
+            margin: 0; padding: 0; height: 100%;
             font-family: 'Kanit', sans-serif;
-            background-color: #000;
+            background-color: #FDFBF7;
             overflow-x: hidden;
         }
-
         .font-montserrat { font-family: 'Montserrat', sans-serif; }
 
-        /* Container สำหรับ Video Background - เต็มหน้าจอและอยู่ Layer ล่างสุด */
-        .video-docker {
+        /* Video Background Layer */
+        .video-container {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: -2;
+            overflow: hidden;
         }
-
-        .video-docker video {
-            width: 100%;
-            height: 100%;
+        .video-container video {
+            width: 100%; height: 100%;
             object-fit: cover;
-            background-color: #000;
         }
 
-        /* Overlay ที่ซอฟต์มาก - เพื่อให้เห็นวิดีโอชัดเจนขึ้น แต่ตัวหนังสือยังอ่านได้ */
-        .video-overlay-soft {
+        /* ปรับ Overlay ให้จางลงเพื่อให้เห็น VDO ชัดๆ แบบ Minimal */
+        .overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.2); /* ปรับความเข้มจางได้ที่นี่ (0.2 = จางมาก) */
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(253, 251, 247, 0.7); /* สีครีมอ่อนๆ จาง 70% */
             z-index: -1;
         }
 
-        /* Nav Strip กึ่งโปร่งใส (เหมือนเดิม) */
-        .nav-strip {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        /* Navigation Style */
+        .nav-blur {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* เทคนิค Drop Shadow ที่ทำให้ตัวหนังสือสีขาวลอยเด่นขึ้นจากวิดีโอ */
-        .text-pop-out {
-            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* เพิ่มเงาเข้มหลังตัวอักษร */
+        /* แอนิเมชั่นเล็กน้อยให้รูป Artwork ลอยไปมาเบาๆ */
+        .floating { 
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
         }
 
-        .cta-button {
+        .btn-jazz {
+            background: #0076BE;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
         }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(0, 118, 190, 0.4);
-            background-color: #3AB5E5;
-            color: white;
+        .btn-jazz:hover {
+            background: #3AB5E5;
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body class="text-white">
+<body>
 
-    <div class="video-docker">
+    <div class="video-container">
         <video autoplay muted loop playsinline>
             <source src="https://drive.google.com/uc?export=download&id=1DbhPrNXIHQY-aVfa4JCX3p_92SS9bWdo" type="video/mp4">
-            Your browser does not support the video tag.
         </video>
     </div>
-    <div class="video-overlay-soft"></div>
+    <div class="overlay"></div>
 
-    <header class="nav-strip sticky top-0 z-50">
+    <nav class="nav-blur sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <img src="https://drive.google.com/thumbnail?id=1-s-RY3BlkvRESeHHcH9fa3EjJb4NsbJO&sz=w1000" alt="TYJ Logo" class="h-10 md:h-12 brightness-0 invert">
+            <img src="https://drive.google.com/thumbnail?id=1gyR1DrbnShdL8q20qTx1Oj_aDXlBoQH3&sz=w1000" alt="TYJ Logo" class="h-10 md:h-12">
             
-            <div class="hidden md:flex gap-8 font-montserrat font-extrabold text-[12px] tracking-widest text-white/80">
-                <a href="#" class="hover:text-white transition">PROGRAM</a>
-                <a href="#" class="hover:text-white transition">ARTISTS</a>
-                <a href="#" class="hover:text-white transition">ABOUT</a>
+            <div class="hidden md:flex gap-10 font-montserrat font-extrabold text-[12px] tracking-widest text-slate-600">
+                <a href="#" class="hover:text-blue-600">PROGRAM</a>
+                <a href="#" class="hover:text-blue-600">ARTISTS</a>
+                <a href="#" class="hover:text-blue-600">ABOUT</a>
             </div>
 
-            <button class="font-montserrat font-extrabold text-xs bg-white text-slate-900 px-6 py-2.5 rounded-full cta-button">
+            <button class="font-montserrat font-extrabold text-xs text-white px-6 py-2.5 rounded-full btn-jazz shadow-lg">
                 TICKETS
             </button>
         </div>
-    </header>
+    </nav>
 
-    <main class="max-w-7xl mx-auto px-6 min-h-[85vh] flex items-center justify-center text-center relative z-10">
-        <div class="max-w-3xl">
-            <p class="font-montserrat font-extrabold text-[#3AB5E5] tracking-[0.4em] text-sm mb-6 uppercase text-pop-out">
-                Youth Energy & Sound
-            </p>
-            <h1 class="font-montserrat font-extrabold text-4xl md:text-7xl mb-8 leading-tight tracking-tighter text-pop-out">
-                THAI YOUTH JAZZ <br> EXPERIENCE
-            </h1>
-            <p class="text-white text-lg md:text-xl mb-14 font-light leading-relaxed text-pop-out">
-                สัมผัสพลังดนตรีจากเยาวชนทั่วไทย <br class="hidden md:block"> 
-                ในรูปแบบที่คุณไม่เคยเห็นมาก่อน
-            </p>
+    <main class="relative z-10 flex flex-col items-center justify-center min-h-[80vh] px-6 text-center">
+        
+        <div class="floating max-w-[500px] w-full mb-8">
+            <img src="https://drive.google.com/thumbnail?id=1d-1JPBnYtq0-7tygotbhxVA22wC0dHeO&sz=w1000" 
+                 alt="Thai Youth Jazz Artwork" 
+                 class="w-full h-auto drop-shadow-2xl">
+        </div>
+
+        <div class="max-w-2xl">
+            <p class="font-montserrat font-extrabold text-slate-400 tracking-[0.5em] text-[10px] mb-4 uppercase">Bangkok 2024 - A New Era of Jazz</p>
+            <h2 class="text-slate-800 text-lg md:text-xl font-light mb-10 tracking-wide">
+                พลังสร้างสรรค์ดนตรีแจ๊สจากเยาวชนรุ่นใหม่ <br class="hidden md:block">
+                สัมผัสประสบการณ์ทางดนตรีที่ไร้ขีดจำกัด
+            </h2>
             
-            <div class="flex flex-col sm:flex-row gap-5 justify-center font-montserrat relative z-10">
-                <a href="#" class="bg-white text-slate-900 px-10 py-4 rounded-2xl font-extrabold cta-button text-center">
-                    EXPLORE SHOWS
-                </a>
-                <a href="#" class="border-2 border-white/40 bg-white/5 text-white px-10 py-4 rounded-2xl font-extrabold hover:bg-white/10 transition text-center">
-                    รู้จักกับเรา
+            <div class="flex flex-col sm:flex-row gap-4 justify-center font-montserrat">
+                <a href="#" class="border-2 border-slate-800 text-slate-800 px-10 py-3 rounded-xl font-extrabold hover:bg-slate-800 hover:text-white transition">
+                    VIEW SCHEDULE
                 </a>
             </div>
         </div>
     </main>
 
-    <footer class="py-12 text-center relative z-10">
-        <p class="font-montserrat font-extrabold text-[10px] tracking-[0.5em] text-white/50 text-pop-out">© 2024 THAI YOUTH JAZZ COMMUNITY</p>
+    <footer class="relative z-10 py-10 flex flex-col items-center gap-6">
+        <div class="flex gap-8 opacity-40 grayscale hover:grayscale-0 transition duration-500">
+            <a href="#" class="text-xl">FB</a>
+            <a href="#" class="text-xl">IG</a>
+            <a href="#" class="text-xl">TT</a>
+        </div>
+        <p class="font-montserrat font-extrabold text-[9px] tracking-[0.6em] text-slate-400 uppercase">
+            © 2024 Thai Youth Jazz All Rights Reserved.
+        </p>
     </footer>
 
 </body>
