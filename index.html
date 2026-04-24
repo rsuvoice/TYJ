@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thai Youth Jazz | Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Kanit', sans-serif; background-color: #FDFBF7; }
+        .jazz-gradient {
+            background: linear-gradient(135deg, #0076BE 0%, #3AB5E5 100%);
+        }
+        .artwork-shadow {
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <nav class="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
+        <div class="flex items-center gap-4">
+            <img src="TYJ_LOGO.png" alt="TYJ Logo" class="h-12"> </div>
+        <ul class="hidden md:flex gap-8 font-medium text-slate-600">
+            <li><a href="#" class="hover:text-blue-600 transition">PROGRAM</a></li>
+            <li><a href="#" class="hover:text-blue-600 transition">ARTISTS</a></li>
+            <li><a href="#" class="hover:text-blue-600 transition">ABOUT</a></li>
+        </ul>
+        <button class="bg-[#0076BE] text-white px-6 py-2 rounded-full font-bold hover:bg-blue-700 transition shadow-lg">
+            TICKETS
+        </button>
+    </nav>
+
+    <section class="relative max-w-7xl mx-auto px-8 py-12 md:py-20 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 z-10 text-center md:text-left">
+            <h2 class="text-[#0076BE] font-bold tracking-widest mb-2">EST. 2024</h2>
+            <h1 class="text-6xl md:text-8xl font-black leading-tight text-slate-900 mb-6">
+                THAI <br> <span class="text-transparent bg-clip-text jazz-gradient">YOUTH</span> <br> JAZZ
+            </h1>
+            <p class="text-lg text-slate-500 mb-8 max-w-md">
+                เปิดประสบการณ์ดนตรีแจ๊สร่วมสมัย จากพลังของคนรุ่นใหม่ 
+                ผสมผสานศิลปะและจินตนาการอย่างไร้ขีดจำกัด
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <a href="#" class="bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:scale-105 transition text-center">
+                    ดูตารางการแสดง
+                </a>
+                <a href="#" class="border-2 border-slate-200 px-8 py-4 rounded-xl font-bold hover:bg-white transition text-center">
+                    รู้จักกับเรา
+                </a>
+            </div>
+        </div>
+
+        <div class="md:w-1/2 mt-12 md:mt-0 relative">
+            <div class="relative z-10 artwork-shadow">
+                <img src="TYJ_TEMPLATE_A3.jpg" alt="Thai Youth Jazz Artwork" class="rounded-3xl w-full max-w-md mx-auto transform -rotate-2 hover:rotate-0 transition duration-500">
+            </div>
+            <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+        </div>
+    </section>
+
+    <section class="bg-white py-20 mt-10">
+        <div class="max-w-7xl mx-auto px-8 text-center">
+            <h3 class="text-3xl font-bold mb-12">Highlighted Artists</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group cursor-pointer">
+                    <div class="h-80 bg-slate-100 rounded-2xl mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&q=80&w=500" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h4 class="font-bold text-xl">The Midnight Quintet</h4>
+                    <p class="text-slate-500">Modern Jazz</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="h-80 bg-slate-100 rounded-2xl mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1514525253361-b83f859b25c0?auto=format&fit=crop&q=80&w=500" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h4 class="font-bold text-xl">Youth All-Star Big Band</h4>
+                    <p class="text-slate-500">Classic Swing</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="h-80 bg-slate-100 rounded-2xl mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&q=80&w=500" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h4 class="font-bold text-xl">Sara & The Sax</h4>
+                    <p class="text-slate-500">Vocal Jazz</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#002B49] text-white py-12 text-center">
+        <div class="flex justify-center gap-6 mb-6">
+            <a href="#" class="hover:opacity-70 transition">Instagram</a>
+            <a href="#" class="hover:opacity-70 transition">Facebook</a>
+            <a href="#" class="hover:opacity-70 transition">TikTok</a>
+        </div>
+        <p class="opacity-50 text-sm">© 2024 Thai Youth Jazz. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
