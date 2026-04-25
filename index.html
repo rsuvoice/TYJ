@@ -32,7 +32,6 @@
             box-sizing: border-box;
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        /* ปรับขนาด Logo ให้พอดี */
         .logo-area img { height: 55px; display: block; }
         .header-links { margin-left: 50px; display: flex; gap: 30px; }
         .header-links a { text-decoration: none; color: #444444; font-size: 16px; font-weight: 500; transition: color 0.3s; }
@@ -48,32 +47,33 @@
             display: flex;
             flex-direction: column;
             
-            /* การจัดวางในหน้าจอคอมพิวเตอร์ (Desktop) */
-            justify-content: flex-start; 
-            padding-top: 60px; /* ดันลงมาเพื่อไม่ให้หัวขาด */
-            
+            /* เปลี่ยนกลับมาให้อยู่กึ่งกลางจอเสมอ */
+            justify-content: center; 
             align-items: center;
             z-index: 1; 
             pointer-events: none; 
             text-align: center;
-            padding-left: 20px;
-            padding-right: 20px;
+            padding: 20px;
             box-sizing: border-box;
         }
 
+        /* 🛠 แก้ไขขนาด Artwork ตรงนี้: จำกัดความสูงไม่ให้ล้นจอ */
         .artwork-image {
-            height: auto;
-            max-width: 900px; 
-            width: 95%; 
-            margin-bottom: -20px; 
+            width: 100%; 
+            max-width: 850px; /* ลดความกว้างสูงสุดลงนิดนึงเพื่อความบาลานซ์ */
+            max-height: 50vh; /* บังคับความสูงไม่ให้เกิน 50% ของหน้าจอ */
+            object-fit: contain; /* รักษาสัดส่วนรูปไว้ไม่ให้เบี้ยว */
+            margin-bottom: -10px; /* ดึงข้อความให้ชิดขึ้น */
             animation: floatBobbing 5s ease-in-out infinite;
             filter: drop-shadow(0px 15px 30px rgba(0,0,0,0.1));
         }
 
+        /* 🛠 แก้ไขข้อความ Artwork Text: จำกัดความสูงเช่นกัน */
         .artwork-text {
-            height: auto;
-            max-width: 700px;
-            width: 85%;
+            width: 100%;
+            max-width: 650px;
+            max-height: 15vh; /* บังคับความสูงไม่ให้เกิน 15% ของหน้าจอ */
+            object-fit: contain;
             margin-top: 0;
         }
 
@@ -96,18 +96,15 @@
         .bg-clef { left: -20px; }
         .bg-sax { right: -20px; }
 
-        /* 3. SCROLLING LAYER (เนื้อหาโปร่งใสเห็นข้างหลังชัด) */
+        /* 3. SCROLLING LAYER (เนื้อหาโปร่งใส) */
         .scrolling-content-layer {
             position: relative;
             z-index: 10; 
             margin-top: 100vh; 
-            
-            /* ความโปร่งใสระดับสูงสุดตามคำขอ */
             background: rgba(255, 255, 255, 0.1); 
             backdrop-filter: blur(3px); 
             -webkit-backdrop-filter: blur(3px);
             border-top: 1px solid rgba(255, 255, 255, 0.4); 
-            
             width: 100%;
             padding: 80px 20px;
             box-sizing: border-box;
@@ -128,7 +125,6 @@
         }
         .video-wrapper iframe { width: 100%; height: 100%; border: none; }
 
-        /* กล่องข้อความแบบสั้น */
         .future-info {
             max-width: 800px;
             margin-top: 50px;
@@ -154,7 +150,7 @@
             z-index: 10;
         }
 
-        /* 📱 สำหรับหน้าจอมือถือ (ปรับจูนตำแหน่ง Artwork และเมนู) */
+        /* 📱 สำหรับหน้าจอมือถือ (ยังคงไว้เหมือนเดิมเป๊ะๆ) */
         @media (max-width: 768px) {
             .top-bar { 
                 height: auto; 
@@ -175,10 +171,10 @@
             .fixed-background-layer { 
                 top: 95px; 
                 justify-content: flex-start; 
-                padding-top: 10px; /* ในมือถือไม่ดันลงเยอะเหมือนคอม */
+                padding-top: 10px;
             }
-            .artwork-image { max-width: 100%; width: 100%; margin-bottom: -15px; } 
-            .artwork-text { max-width: 90%; }
+            .artwork-image { max-height: none; max-width: 100%; width: 100%; margin-bottom: -15px; } 
+            .artwork-text { max-height: none; max-width: 90%; }
             
             .bg-line-art { opacity: 0.15; }
             
@@ -213,16 +209,13 @@
     <img src="https://drive.google.com/thumbnail?id=1HvU6mYUNvLenvdMTdiQPzN2zeuZV2j2e&sz=w1000" class="bg-line-art bg-sax">
 
     <main class="scrolling-content-layer">
-        
         <div class="video-wrapper">
             <iframe src="https://www.youtube.com/embed/I98NphahYjo?rel=0" allowfullscreen></iframe>
         </div>
-
         <div class="future-info">
             <h2>ยินดีต้อนรับสู่ THAI YOUTH JAZZ 2026</h2>
             <p>พื้นที่รวบรวมข้อมูลกิจกรรม และตารางการฝึกซ้อมของเยาวชนดนตรีแจ๊สทั่วประเทศไทย</p>
         </div>
-
     </main>
 
     <footer class="site-footer">
