@@ -22,7 +22,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 85px; 
+            height: 80px; 
             padding: 0 40px;
             display: flex;
             align-items: center;
@@ -32,50 +32,45 @@
             box-sizing: border-box;
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .logo-area img { height: 55px; display: block; }
-        .header-links { margin-left: 50px; display: flex; gap: 30px; }
-        .header-links a { text-decoration: none; color: #444444; font-size: 16px; font-weight: 500; transition: color 0.3s; }
-        .header-links a:hover { color: #F26522; }
+        .logo-area img { height: 50px; display: block; }
+        .header-links { margin-left: 50px; display: flex; gap: 25px; }
+        .header-links a { text-decoration: none; color: #444444; font-size: 15px; font-weight: 500; }
 
         /* 2. BACKGROUND LAYER (Fixed Artwork) */
         .fixed-background-layer {
             position: fixed;
-            top: 85px; 
+            top: 80px; /* ต่อจาก Header */
             left: 0;
             width: 100%;
-            height: calc(100vh - 85px);
+            height: calc(100vh - 80px);
             display: flex;
             flex-direction: column;
-            justify-content: center; 
+            justify-content: center; /* จัดกึ่งกลางแนวตั้ง */
             align-items: center;
             z-index: 1; 
             pointer-events: none; 
-            text-align: center;
-            
-            /* 🛠 เพิ่ม Padding Bottom เพื่อดันทุกอย่างขึ้นมาจากขอบล่าง */
-            padding: 10px 20px 60px 20px; 
+            padding: 20px;
             box-sizing: border-box;
         }
 
+        /* การตั้งค่าสำหรับ MacBook / Desktop ทั่วไป */
         .artwork-image {
-            width: 100%; 
-            max-width: 1100px; 
-            max-height: 70vh; /* ปรับลดลงนิดนึงเพื่อให้มีที่ว่างให้ตัวอักษรด้านล่างลอยขึ้นมา */
-            object-fit: contain; 
-            
-            /* 🛠 ดึงตัวอักษรข้างล่างให้ขยับขึ้นมาชิดรูปมากขึ้น */
-            margin-bottom: -45px; 
-            
+            width: auto;
+            max-width: 90%;
+            height: auto;
+            max-height: 60vh; /* สูงไม่เกิน 60% ของจอ */
+            object-fit: contain;
+            margin-bottom: -20px;
             animation: floatBobbing 5s ease-in-out infinite;
             filter: drop-shadow(0px 15px 30px rgba(0,0,0,0.1));
         }
 
         .artwork-text {
-            width: 100%;
-            max-width: 850px; 
-            max-height: 20vh; 
+            width: auto;
+            max-width: 80%;
+            height: auto;
+            max-height: 15vh; /* ตัวอักษรสูงไม่เกิน 15% ของจอ */
             object-fit: contain;
-            margin-top: 0;
         }
 
         @keyframes floatBobbing {
@@ -84,106 +79,83 @@
             100% { transform: translateY(0px); }
         }
 
-        /* ลายเส้นประกอบซ้ายขวา */
+        /* ลายเส้นประกอบ */
         .bg-line-art {
             position: fixed;
-            top: 85px;
-            height: calc(100vh - 85px);
+            top: 80px;
+            height: calc(100vh - 80px);
             z-index: 0; 
             pointer-events: none;
             opacity: 0.8;
             object-fit: contain;
         }
-        .bg-clef { left: -20px; }
-        .bg-sax { right: -20px; }
+        .bg-clef { left: -30px; }
+        .bg-sax { right: -30px; }
 
-        /* 3. SCROLLING LAYER (เนื้อหาโปร่งใส) */
+        /* 3. SCROLLING LAYER */
         .scrolling-content-layer {
             position: relative;
             z-index: 10; 
             margin-top: 100vh; 
             background: rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(3px); 
-            -webkit-backdrop-filter: blur(3px);
-            border-top: 1px solid rgba(255, 255, 255, 0.4); 
+            backdrop-filter: blur(5px); 
+            -webkit-backdrop-filter: blur(5px);
             width: 100%;
             padding: 80px 20px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 -10px 40px rgba(0,0,0,0.08); 
         }
 
         .video-wrapper {
             width: 100%;
-            max-width: 800px; 
+            max-width: 850px; 
             aspect-ratio: 16 / 9;
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
             background-color: #000;
         }
         .video-wrapper iframe { width: 100%; height: 100%; border: none; }
 
-        .future-info {
-            max-width: 800px;
-            margin-top: 50px;
-            text-align: center;
-            color: #333333;
-            line-height: 1.8;
-            background: rgba(255, 255, 255, 0.85); 
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-        .future-info h2 { margin-top: 0; color: #F26522; }
-
-        .site-footer {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            width: 100%;
-            text-align: center;
-            padding: 30px 0;
-            color: #666666;
-            font-size: 13px;
-            position: relative;
-            z-index: 10;
+        /* 📱 สำหรับแท็บเล็ต / iPad (768px - 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .artwork-image { max-height: 55vh; max-width: 95%; }
+            .artwork-text { max-height: 12vh; max-width: 85%; }
+            .bg-line-art { opacity: 0.3; }
         }
 
-        /* 📱 สำหรับหน้าจอมือถือ */
+        /* 📱 สำหรับมือถือ (ต่ำกว่า 768px) */
         @media (max-width: 768px) {
             .top-bar { 
                 height: auto; 
-                padding: 15px 10px 10px 10px; 
+                padding: 15px; 
                 flex-direction: column; 
-                gap: 12px;
+                gap: 10px;
             }
             .logo-area img { height: 40px; }
-            .header-links { 
-                display: flex; 
-                margin-left: 0; 
-                gap: 15px; 
-                flex-wrap: wrap; 
-                justify-content: center; 
-            }
+            .header-links { margin-left: 0; gap: 15px; }
             .header-links a { font-size: 14px; }
             
             .fixed-background-layer { 
-                top: 95px; 
-                justify-content: flex-start; 
-                padding: 10px 10px 10px 10px; /* ในมือถือใช้ระยะเดิม */
+                top: 90px; 
+                justify-content: flex-start; /* มือถือให้เริ่มจากด้านบน */
+                padding-top: 20px; 
             }
-            .artwork-image { max-height: none; max-width: 100%; width: 100%; margin-bottom: -15px; } 
-            .artwork-text { max-height: none; max-width: 90%; }
+            .artwork-image { 
+                max-height: none; 
+                width: 100%; 
+                max-width: 100%; 
+                margin-bottom: -10px; 
+            } 
+            .artwork-text { 
+                max-height: none; 
+                width: 90%; 
+            }
             
             .bg-line-art { opacity: 0.15; }
-            
-            .scrolling-content-layer { 
-                margin-top: 75vh; 
-                padding: 50px 15px; 
-            }
-            .future-info { padding: 20px; font-size: 15px; }
+            .scrolling-content-layer { margin-top: 75vh; }
         }
     </style>
 </head>
@@ -213,15 +185,7 @@
         <div class="video-wrapper">
             <iframe src="https://www.youtube.com/embed/I98NphahYjo?rel=0" allowfullscreen></iframe>
         </div>
-        <div class="future-info">
-            <h2>ยินดีต้อนรับสู่ THAI YOUTH JAZZ 2026</h2>
-            <p>พื้นที่รวบรวมข้อมูลกิจกรรม และตารางการฝึกซ้อมของเยาวชนดนตรีแจ๊สทั่วประเทศไทย</p>
-        </div>
     </main>
-
-    <footer class="site-footer">
-        &copy; 2026 Thai Youth Jazz. All Rights Reserved.
-    </footer>
 
 </body>
 </html>
