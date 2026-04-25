@@ -51,25 +51,28 @@
             z-index: 1; 
             pointer-events: none; 
             text-align: center;
-            padding: 10px; /* ลด padding เพื่อให้มีพื้นที่ขยายรูป */
+            
+            /* 🛠 เพิ่ม Padding Bottom เพื่อดันทุกอย่างขึ้นมาจากขอบล่าง */
+            padding: 10px 20px 60px 20px; 
             box-sizing: border-box;
         }
 
-        /* 🛠 ปรับขนาด Artwork ให้ใหญ่ขึ้นมาก */
         .artwork-image {
             width: 100%; 
-            max-width: 1100px; /* ขยายความกว้างสูงสุดเป็น 1100px */
-            max-height: 75vh; /* ขยายความสูงให้ใช้พื้นที่ได้ถึง 75% ของหน้าจอ */
+            max-width: 1100px; 
+            max-height: 70vh; /* ปรับลดลงนิดนึงเพื่อให้มีที่ว่างให้ตัวอักษรด้านล่างลอยขึ้นมา */
             object-fit: contain; 
-            margin-bottom: -25px; /* ดึงข้อความให้ชิดขึ้นอีกนิด */
+            
+            /* 🛠 ดึงตัวอักษรข้างล่างให้ขยับขึ้นมาชิดรูปมากขึ้น */
+            margin-bottom: -45px; 
+            
             animation: floatBobbing 5s ease-in-out infinite;
             filter: drop-shadow(0px 15px 30px rgba(0,0,0,0.1));
         }
 
-        /* 🛠 ปรับขนาดข้อความ Artwork Text ให้ใหญ่ขึ้นตาม */
         .artwork-text {
             width: 100%;
-            max-width: 850px; /* ขยายจาก 700px */
+            max-width: 850px; 
             max-height: 20vh; 
             object-fit: contain;
             margin-top: 0;
@@ -148,7 +151,7 @@
             z-index: 10;
         }
 
-        /* 📱 สำหรับหน้าจอมือถือ (ยังคงไว้เหมือนเดิมที่พอดีแล้ว) */
+        /* 📱 สำหรับหน้าจอมือถือ */
         @media (max-width: 768px) {
             .top-bar { 
                 height: auto; 
@@ -169,7 +172,7 @@
             .fixed-background-layer { 
                 top: 95px; 
                 justify-content: flex-start; 
-                padding-top: 10px;
+                padding: 10px 10px 10px 10px; /* ในมือถือใช้ระยะเดิม */
             }
             .artwork-image { max-height: none; max-width: 100%; width: 100%; margin-bottom: -15px; } 
             .artwork-text { max-height: none; max-width: 90%; }
