@@ -3,126 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thai Youth Jazz | Experience</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Kanit:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Thai Youth Jazz (TYJ) - โครงการส่งเสริมเยาวชนด้านดนตรี</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        body, html {
-            margin: 0; padding: 0; height: 100%;
+        /* สไตล์พื้นฐาน: ขาวสะอาดตา */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff; /* พื้นหลังสีขาวล้วน */
             font-family: 'Kanit', sans-serif;
-            background-color: #000; /* เปลี่ยนสีพื้นหลังเป็นสีดำเพื่อให้วิดีโอเด่นขึ้น */
-            overflow-x: hidden;
+            overflow-x: hidden; 
+            color: #333333;
         }
-        .font-montserrat { font-family: 'Montserrat', sans-serif; }
 
-        /* Video Background Layer */
-        .video-container {
+        /* 1. แถบ Navigation ด้านบน */
+        .top-bar {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: -2;
-            overflow: hidden;
-        }
-        .video-container video {
-            width: 100%; height: 100%;
-            object-fit: cover;
-        }
-
-        /* ปรับ Overlay ให้จางลงเพื่อให้เห็น VDO ชัดๆ แบบ Minimal */
-        .overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(253, 251, 247, 0.7); /* สีครีมอ่อนๆ จาง 70% */
-            z-index: -1;
-        }
-
-        /* Navigation Style */
-        .nav-blur {
-            background: rgba(255, 255, 255, 0.8);
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            box-sizing: border-box;
+            border-bottom: 1px solid rgba(0,0,0,0.03); /* เส้นคั่นบางๆ ให้ดูมีมิติ */
+        }
+        
+        /* โลโก้ */
+        .logo-area img {
+            height: 55px;
+            display: block;
         }
 
-        /* แอนิเมชั่นเล็กน้อยให้รูป Artwork ลอยไปมาเบาๆ */
-        .floating { 
-            animation: float 6s ease-in-out infinite;
+        /* เมนู Link ข้าง Logo */
+        .header-links {
+            margin-left: 50px;
+            display: flex;
+            gap: 30px;
         }
-        @keyframes float {
+        .header-links a {
+            text-decoration: none;
+            color: #444444;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .header-links a:hover {
+            color: #0076BE;
+        }
+
+        /* 2. พื้นที่ตรงกลางทั้งหมด */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; 
+            text-align: center;
+            padding: 100px 20px 40px 20px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 10; /* ให้อยู่เหนือลายเส้น */
+        }
+
+        /* Artwork กราฟิก (มี Effect ลอย) */
+        .artwork-image {
+            height: auto;
+            max-width: 480px; /* ปรับขนาดกราฟิกให้พอดี */
+            width: 100%;
+            margin-bottom: 15px;
+            animation: floatBobbing 5s ease-in-out infinite;
+            filter: drop-shadow(0px 15px 20px rgba(0,0,0,0.06)); /* เพิ่มเงาบางๆ ให้รูปลอยชัดขึ้น */
+        }
+
+        /* คีย์เฟรมสำหรับให้กราฟิกลอยขึ้น-ลง */
+        @keyframes floatBobbing {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-15px); } 
             100% { transform: translateY(0px); }
         }
 
-        .btn-jazz {
-            background: #0076BE;
-            transition: all 0.3s ease;
+        /* ข้อความจากรูปภาพ (Artwork Text) */
+        .artwork-text {
+            height: auto;
+            max-width: 420px; /* ขนาดของกลุ่มข้อความ */
+            width: 100%;
+            margin-top: 10px;
         }
-        .btn-jazz:hover {
-            background: #3AB5E5;
-            transform: scale(1.05);
+
+        /* 3 & 4. ลายเส้นซ้าย-ขวา */
+        .bg-line-art {
+            position: fixed;
+            bottom: -20px; /* ดึงลงมาติดขอบล่างนิดหน่อย */
+            height: 65vh; /* ขนาดของลายเส้น */
+            z-index: 1; /* ให้อยู่หลัง Content */
+            pointer-events: none; /* ป้องกันการเผลอคลิกโดน */
+            opacity: 0.9;
+        }
+        .bg-clef {
+            left: -20px; /* ชิดขอบซ้าย */
+        }
+        .bg-sax {
+            right: -20px; /* ชิดขอบขวา */
+        }
+
+        /* จัดการหน้าจอสำหรับมือถือ */
+        @media (max-width: 768px) {
+            .top-bar { padding: 15px 20px; }
+            .logo-area img { height: 45px; }
+            .header-links { display: none; } /* ซ่อนเมนูลิงก์บนมือถือชั่วคราว */
+            .artwork-image { max-width: 80%; }
+            .artwork-text { max-width: 75%; }
+            .bg-line-art { height: 40vh; opacity: 0.4; } /* ให้ลายเส้นบนมือถือจางลงจะได้ไม่กวนรูปหลัก */
+            .bg-clef { left: -40px; }
+            .bg-sax { right: -40px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="video-container">
-        <video autoplay muted loop playsinline>
-            <source src="https://drive.google.com/uc?export=download&id=1DbhPrNXIHQY-aVfa4JCX3p_92SS9bWdo" type="video/mp4">
-        </video>
-    </div>
-    <div class="overlay"></div>
-
-    <nav class="nav-blur sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <img src="https://drive.google.com/thumbnail?id=1gyR1DrbnShdL8q20qTx1Oj_aDXlBoQH3&sz=w1000" alt="TYJ Logo" class="h-10 md:h-12">
-            
-            <div class="hidden md:flex gap-10 font-montserrat font-extrabold text-[12px] tracking-widest text-slate-600">
-                <a href="#" class="hover:text-blue-600">PROGRAM</a>
-                <a href="#" class="hover:text-blue-600">ARTISTS</a>
-                <a href="#" class="hover:text-blue-600">ABOUT</a>
-            </div>
-
-            <button class="font-montserrat font-extrabold text-xs text-white px-6 py-2.5 rounded-full btn-jazz shadow-lg">
-                TICKETS
-            </button>
+    <header class="top-bar">
+        <div class="logo-area">
+            <img src="https://drive.google.com/thumbnail?id=1wTTTIOdEpVF6QKqIOe4IF6bc9ovlCikv&sz=w1000" alt="TYJ Logo">
         </div>
-    </nav>
+        <nav class="header-links">
+            <a href="#">หน้าแรก</a>
+            <a href="#">ตารางกิจกรรม</a>
+            <a href="#">รายชื่อศิลปิน</a>
+            <a href="#">ติดต่อเรา</a>
+        </nav>
+    </header>
 
-    <main class="relative z-10 flex flex-col items-center justify-center min-h-[80vh] px-6 text-center">
+    <main class="hero-section">
         
-        <div class="floating max-w-[500px] w-full mb-8">
-            <img src="LINK_IMAGE_ARTWORK_ใหม่_แบบโปร่งใส" 
-                 alt="Thai Youth Jazz Artwork" 
-                 class="w-full h-auto drop-shadow-2xl">
-        </div>
+        <img src="https://drive.google.com/thumbnail?id=1PywfABYVYRgwqHpP6hIFKrtfWoeYxLcd&sz=w1000" alt="Thai Youth Jazz Artwork" class="artwork-image">
 
-        <div class="max-w-2xl">
-            <p class="font-montserrat font-extrabold text-slate-400 tracking-[0.5em] text-[10px] mb-4 uppercase">Bangkok 2024 - A New Era of Jazz</p>
-            <h2 class="text-slate-800 text-lg md:text-xl font-light mb-10 tracking-wide">
-                พลังสร้างสรรค์ดนตรีแจ๊สจากเยาวชนรุ่นใหม่ <br class="hidden md:block">
-                สัมผัสประสบการณ์ทางดนตรีที่ไร้ขีดจำกัด
-            </h2>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center font-montserrat relative z-10">
-                <a href="#" class="border-2 border-slate-800 text-slate-800 px-10 py-3 rounded-xl font-extrabold hover:bg-slate-800 hover:text-white transition text-center">
-                    VIEW SCHEDULE
-                </a>
-            </div>
-        </div>
+        <img src="https://drive.google.com/thumbnail?id=1CHSf4m6TiUQJs4zukSYYROwdpqSf8xjD&sz=w1000" alt="Thai Youth Jazz Text" class="artwork-text">
+
     </main>
 
-    <footer class="relative z-10 py-10 flex flex-col items-center gap-6 footer-opacity">
-        <div class="flex gap-8 grayscale hover:grayscale-0 transition duration-500">
-            <a href="#" class="text-xl">FB</a>
-            <a href="#" class="text-xl">IG</a>
-            <a href="#" class="text-xl">TT</a>
-        </div>
-        <p class="font-montserrat font-extrabold text-[9px] tracking-[0.6em] text-slate-400 uppercase">
-            © 2024 Thai Youth Jazz All Rights Reserved.
-        </p>
-    </footer>
+    <img src="https://drive.google.com/thumbnail?id=1UJ0aNHLuGpgSgx3OQcIKAVXz1Y7M_PBC&sz=w1000" alt="Clef Line Art" class="bg-line-art bg-clef">
+
+    <img src="https://drive.google.com/thumbnail?id=1HvU6mYUNvLenvdMTdiQPzN2zeuZV2j2e&sz=w1000" alt="Saxophone Line Art" class="bg-line-art bg-sax">
 
 </body>
 </html>
