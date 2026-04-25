@@ -46,9 +46,7 @@
             height: calc(100vh - 85px);
             display: flex;
             flex-direction: column;
-            
-            /* เปลี่ยนกลับมาให้อยู่กึ่งกลางจอเสมอ */
-            justify-content: center; 
+            justify-content: center; /* ให้อยู่กึ่งกลางพอดี */
             align-items: center;
             z-index: 1; 
             pointer-events: none; 
@@ -57,22 +55,21 @@
             box-sizing: border-box;
         }
 
-        /* 🛠 แก้ไขขนาด Artwork ตรงนี้: จำกัดความสูงไม่ให้ล้นจอ */
+        /* 🛠 แก้ไขขนาด Artwork ตรงนี้: กลับมาใหญ่เหมือนเดิม แต่เซฟตี้ไม่ให้ล้น */
         .artwork-image {
             width: 100%; 
-            max-width: 850px; /* ลดความกว้างสูงสุดลงนิดนึงเพื่อความบาลานซ์ */
-            max-height: 50vh; /* บังคับความสูงไม่ให้เกิน 50% ของหน้าจอ */
-            object-fit: contain; /* รักษาสัดส่วนรูปไว้ไม่ให้เบี้ยว */
-            margin-bottom: -10px; /* ดึงข้อความให้ชิดขึ้น */
+            max-width: 900px; /* กลับมาใช้ความกว้าง 900px ให้ใหญ่เต็มตา */
+            max-height: 65vh; /* ปล่อยความสูงให้ยืดได้ถึง 65% ของจอ */
+            object-fit: contain; 
+            margin-bottom: -15px; /* ดึงข้อความให้ชิดกัน */
             animation: floatBobbing 5s ease-in-out infinite;
             filter: drop-shadow(0px 15px 30px rgba(0,0,0,0.1));
         }
 
-        /* 🛠 แก้ไขข้อความ Artwork Text: จำกัดความสูงเช่นกัน */
         .artwork-text {
             width: 100%;
-            max-width: 650px;
-            max-height: 15vh; /* บังคับความสูงไม่ให้เกิน 15% ของหน้าจอ */
+            max-width: 700px;
+            max-height: 18vh; /* ยืดความสูงข้อความขึ้นมาอีกนิด */
             object-fit: contain;
             margin-top: 0;
         }
@@ -150,7 +147,7 @@
             z-index: 10;
         }
 
-        /* 📱 สำหรับหน้าจอมือถือ (ยังคงไว้เหมือนเดิมเป๊ะๆ) */
+        /* 📱 สำหรับหน้าจอมือถือ */
         @media (max-width: 768px) {
             .top-bar { 
                 height: auto; 
@@ -173,6 +170,7 @@
                 justify-content: flex-start; 
                 padding-top: 10px;
             }
+            /* ในมือถือปลดล็อค max-height ออก เพื่อให้เต็มจอ 100% สวยๆ เหมือนเดิม */
             .artwork-image { max-height: none; max-width: 100%; width: 100%; margin-bottom: -15px; } 
             .artwork-text { max-height: none; max-width: 90%; }
             
