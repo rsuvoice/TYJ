@@ -51,24 +51,24 @@
             z-index: 1; 
             pointer-events: none; 
             text-align: center;
-            padding: 10px 20px 40px 20px; /* ดันขึ้นจากขอบล่างนิดหน่อย */
+            padding: 10px 10px 50px 10px; /* ลด Padding ข้างเพื่อใช้พื้นที่ให้คุ้มที่สุด */
             box-sizing: border-box;
         }
 
-        /* 🛠 ปรับ Artwork ให้ใหญ่ขึ้น สำหรับ MacBook และหน้าจอทั่วไป */
+        /* 🛠 ปรับขนาดสำหรับ Desktop / MacBook 13 นิ้ว */
         .artwork-image {
             width: 100%; 
-            max-width: 1050px; /* ให้กว้างได้มากถึง 1050px */
-            max-height: 65vh; /* ให้ใช้พื้นที่ความสูงได้เต็มที่ 65% ของจอ */
+            max-width: 1250px; /* ขยายความกว้างสูงสุดเพื่อให้เต็มหน้าจอ 13 นิ้วมากขึ้น */
+            max-height: 72vh;  /* เพิ่มความสูงให้รูปขยายตัวได้มากขึ้น */
             object-fit: contain; 
-            margin-bottom: -35px; /* ดึงตัวหนังสือให้ชิดรูป */
+            margin-bottom: -45px; /* ดึงตัวหนังสือขึ้นมาอีกนิด */
             animation: floatBobbing 5s ease-in-out infinite;
             filter: drop-shadow(0px 15px 30px rgba(0,0,0,0.1));
         }
 
         .artwork-text {
             width: 100%;
-            max-width: 850px; 
+            max-width: 950px;  /* ขยายตัวอักษรให้ใหญ่ตามรูป */
             max-height: 18vh; 
             object-fit: contain;
             margin-top: 0;
@@ -90,8 +90,8 @@
             opacity: 0.8;
             object-fit: contain;
         }
-        .bg-clef { left: -20px; }
-        .bg-sax { right: -20px; }
+        .bg-clef { left: -30px; }
+        .bg-sax { right: -30px; }
 
         /* 3. SCROLLING LAYER (เนื้อหาโปร่งใส) */
         .scrolling-content-layer {
@@ -122,7 +122,6 @@
         }
         .video-wrapper iframe { width: 100%; height: 100%; border: none; }
 
-        /* 🛠 นำกล่องข้อความกลับมาแล้วค่ะ */
         .future-info {
             max-width: 800px;
             margin-top: 50px;
@@ -136,7 +135,6 @@
         }
         .future-info h2 { margin-top: 0; color: #F26522; }
 
-        /* 🛠 นำ Footer กลับมาแล้วค่ะ */
         .site-footer {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -149,13 +147,7 @@
             z-index: 10;
         }
 
-        /* 📱 สำหรับแท็บเล็ตและ iPad (ตั้งค่าให้ใหญ่พอดี ไม่โดนบีบ) */
-        @media (max-width: 1024px) {
-            .artwork-image { max-width: 95%; max-height: 60vh; margin-bottom: -25px; }
-            .artwork-text { max-width: 85%; max-height: 15vh; }
-        }
-
-        /* 📱 สำหรับหน้าจอมือถือ (ล็อคค่าเดิมที่พอดี) */
+        /* 📱 สำหรับมือถือ (ล็อคค่าเดิมที่คุณพอใจแล้ว) */
         @media (max-width: 768px) {
             .top-bar { 
                 height: auto; 
