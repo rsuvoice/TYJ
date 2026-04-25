@@ -32,11 +32,13 @@
             box-sizing: border-box;
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
+        /* ปรับขนาด Logo ให้พอดี */
         .logo-area img { height: 55px; display: block; }
         .header-links { margin-left: 50px; display: flex; gap: 30px; }
-        .header-links a { text-decoration: none; color: #444444; font-size: 16px; font-weight: 500; }
+        .header-links a { text-decoration: none; color: #444444; font-size: 16px; font-weight: 500; transition: color 0.3s; }
+        .header-links a:hover { color: #F26522; }
 
-        /* 2. BACKGROUND LAYER (Artwork + Text) - ตรึงอยู่กับที่ */
+        /* 2. BACKGROUND LAYER (Fixed Artwork) */
         .fixed-background-layer {
             position: fixed;
             top: 85px; 
@@ -45,18 +47,23 @@
             height: calc(100vh - 85px);
             display: flex;
             flex-direction: column;
-            justify-content: center; 
+            
+            /* การจัดวางในหน้าจอคอมพิวเตอร์ (Desktop) */
+            justify-content: flex-start; 
+            padding-top: 60px; /* ดันลงมาเพื่อไม่ให้หัวขาด */
+            
             align-items: center;
             z-index: 1; 
             pointer-events: none; 
             text-align: center;
-            padding: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
             box-sizing: border-box;
         }
 
         .artwork-image {
             height: auto;
-            max-width: 950px; 
+            max-width: 900px; 
             width: 95%; 
             margin-bottom: -20px; 
             animation: floatBobbing 5s ease-in-out infinite;
@@ -76,7 +83,7 @@
             100% { transform: translateY(0px); }
         }
 
-        /* ลายเส้นซ้ายขวา (Fixed Background) */
+        /* ลายเส้นประกอบซ้ายขวา */
         .bg-line-art {
             position: fixed;
             top: 85px;
@@ -89,17 +96,17 @@
         .bg-clef { left: -20px; }
         .bg-sax { right: -20px; }
 
-        /* 3. SCROLLING LAYER (Video & Content) - เลเยอร์โปร่งใสมาก */
+        /* 3. SCROLLING LAYER (เนื้อหาโปร่งใสเห็นข้างหลังชัด) */
         .scrolling-content-layer {
             position: relative;
             z-index: 10; 
             margin-top: 100vh; 
             
-            /* ปรับให้โปร่งใสมากๆ เห็นพื้นหลังชัดเจน */
-            background: rgba(255, 255, 255, 0.1); /* ลดสีขาวเหลือแค่ 10% */
-            backdrop-filter: blur(3px); /* ลดความเบลอลงมาก เพื่อให้เห็นลวดลายชัดเจน */
+            /* ความโปร่งใสระดับสูงสุดตามคำขอ */
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(3px); 
             -webkit-backdrop-filter: blur(3px);
-            border-top: 1px solid rgba(255, 255, 255, 0.4); /* ลดความเข้มของเส้นขอบบน */
+            border-top: 1px solid rgba(255, 255, 255, 0.4); 
             
             width: 100%;
             padding: 80px 20px;
@@ -121,22 +128,19 @@
         }
         .video-wrapper iframe { width: 100%; height: 100%; border: none; }
 
-        /* กล่องข้อความ (ยังคงสีขาวไว้เพื่อให้ตัวหนังสือไม่กลืนกับพื้นหลัง) */
+        /* กล่องข้อความแบบสั้น */
         .future-info {
             max-width: 800px;
             margin-top: 50px;
             text-align: center;
             color: #333333;
             line-height: 1.8;
-            background: rgba(255, 255, 255, 0.85); /* ให้พื้นหลังกล่องข้อความทึบขึ้นนิดนึงเพื่อชดเชยเลเยอร์ที่ใสขึ้น */
+            background: rgba(255, 255, 255, 0.85); 
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
-        .future-info h2 {
-            margin-top: 0;
-            color: #F26522; 
-        }
+        .future-info h2 { margin-top: 0; color: #F26522; }
 
         .site-footer {
             background: rgba(255, 255, 255, 0.95);
@@ -150,7 +154,7 @@
             z-index: 10;
         }
 
-        /* 📱 สำหรับหน้าจอมือถือ */
+        /* 📱 สำหรับหน้าจอมือถือ (ปรับจูนตำแหน่ง Artwork และเมนู) */
         @media (max-width: 768px) {
             .top-bar { 
                 height: auto; 
@@ -171,7 +175,7 @@
             .fixed-background-layer { 
                 top: 95px; 
                 justify-content: flex-start; 
-                padding-top: 10px;
+                padding-top: 10px; /* ในมือถือไม่ดันลงเยอะเหมือนคอม */
             }
             .artwork-image { max-width: 100%; width: 100%; margin-bottom: -15px; } 
             .artwork-text { max-width: 90%; }
@@ -190,7 +194,7 @@
 
     <header class="top-bar">
         <div class="logo-area">
-            <img src="https://drive.google.com/thumbnail?id=1R9y3jf3-y5wgVENfIWqWcHSS9odUjHmK&sz=w1000" alt="TYJ Logo">
+            <img src="https://drive.google.com/thumbnail?id=1xHurMGkukvAQUgRI1mrY2X0maJ2AYFeo&sz=w1000" alt="TYJ Logo">
         </div>
         <nav class="header-links">
             <a href="#">หน้าแรก</a>
@@ -216,7 +220,7 @@
 
         <div class="future-info">
             <h2>ยินดีต้อนรับสู่ THAI YOUTH JAZZ 2026</h2>
-            <p>พื้นที่รวบรวมข้อมูลกิจกรรม และตารางการฝึกซ้อมของเยาวชนดนตรีแจ๊สประเทศไทย</p>
+            <p>พื้นที่รวบรวมข้อมูลกิจกรรม และตารางการฝึกซ้อมของเยาวชนดนตรีแจ๊สทั่วประเทศไทย</p>
         </div>
 
     </main>
