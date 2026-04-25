@@ -7,39 +7,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* สไตล์พื้นฐาน: ขาวสะอาดตา */
+        /* สไตล์พื้นฐาน */
         body {
             margin: 0;
             padding: 0;
-            background-color: #ffffff; /* พื้นหลังสีขาวล้วน */
+            background-color: #ffffff;
             font-family: 'Kanit', sans-serif;
             overflow-x: hidden; 
             color: #333333;
         }
 
-        /* 1. แถบ Navigation ด้านบน */
+        /* 1. แถบ Navigation ด้านบน (กำหนดความสูงให้เป๊ะเพื่อคำนวณลายเส้น) */
         .top-bar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 15px 40px;
+            height: 85px; /* กำหนดความสูงของแถบเมนูไว้ที่ 85px */
+            padding: 0 40px;
             display: flex;
             align-items: center;
             z-index: 1000;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             box-sizing: border-box;
-            border-bottom: 1px solid rgba(0,0,0,0.03); /* เส้นคั่นบางๆ ให้ดูมีมิติ */
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         
-        /* โลโก้ */
         .logo-area img {
             height: 55px;
             display: block;
         }
 
-        /* เมนู Link ข้าง Logo */
         .header-links {
             margin-left: 50px;
             display: flex;
@@ -64,63 +63,69 @@
             align-items: center;
             min-height: 100vh; 
             text-align: center;
-            padding: 100px 20px 40px 20px;
+            padding: 100px 20px 40px 20px; /* เผื่อระยะแถบเมนูด้านบน */
             box-sizing: border-box;
             position: relative;
-            z-index: 10; /* ให้อยู่เหนือลายเส้น */
+            z-index: 10; 
         }
 
-        /* Artwork กราฟิก (มี Effect ลอย) */
+        /* Artwork กราฟิก (ขยายให้ใหญ่ขึ้นมาก เพื่อลดช่องว่าง) */
         .artwork-image {
             height: auto;
-            max-width: 480px; /* ปรับขนาดกราฟิกให้พอดี */
+            max-width: 800px; /* ขยายจาก 480px เป็น 800px ให้เด่นเต็มตา */
             width: 100%;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             animation: floatBobbing 5s ease-in-out infinite;
-            filter: drop-shadow(0px 15px 20px rgba(0,0,0,0.06)); /* เพิ่มเงาบางๆ ให้รูปลอยชัดขึ้น */
+            filter: drop-shadow(0px 15px 25px rgba(0,0,0,0.08)); 
         }
 
-        /* คีย์เฟรมสำหรับให้กราฟิกลอยขึ้น-ลง */
         @keyframes floatBobbing {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); } 
+            50% { transform: translateY(-20px); } /* ให้ลอยขึ้นเยอะกว่าเดิมนิดนึงให้สมดุลกับขนาด */
             100% { transform: translateY(0px); }
         }
 
         /* ข้อความจากรูปภาพ (Artwork Text) */
         .artwork-text {
             height: auto;
-            max-width: 420px; /* ขนาดของกลุ่มข้อความ */
+            max-width: 650px; /* ขยายข้อความให้ใหญ่ตามรูปภาพด้านบน */
             width: 100%;
             margin-top: 10px;
+            filter: drop-shadow(0px 5px 10px rgba(0,0,0,0.03));
         }
 
-        /* 3 & 4. ลายเส้นซ้าย-ขวา */
+        /* 3 & 4. ลายเส้นซ้าย-ขวา (ปรับให้ชนบน-ล่าง) */
         .bg-line-art {
             position: fixed;
-            bottom: -20px; /* ดึงลงมาติดขอบล่างนิดหน่อย */
-            height: 65vh; /* ขนาดของลายเส้น */
-            z-index: 1; /* ให้อยู่หลัง Content */
-            pointer-events: none; /* ป้องกันการเผลอคลิกโดน */
-            opacity: 0.9;
+            top: 85px; /* เริ่มต้นที่ใต้ขอบแถบเมนูด้านบนพอดี (ชนขอบ) */
+            height: calc(100vh - 85px); /* ลากยาวลงมาจนสุดขอบจอด้านล่างพอดี (ชนขอบ) */
+            z-index: 1; 
+            pointer-events: none; 
+            opacity: 0.95;
+            object-fit: contain; /* ป้องกันไม่ให้รูปลายเส้นถูกบีบหรือยืดเสียทรง */
         }
+        
         .bg-clef {
-            left: -20px; /* ชิดขอบซ้าย */
+            left: -10px; /* ดึงเข้าขอบซ้ายนิดหน่อยให้ดูเป็นธรรมชาติ */
         }
+        
         .bg-sax {
-            right: -20px; /* ชิดขอบขวา */
+            right: -10px; /* ดึงเข้าขอบขวานิดหน่อยให้ดูเป็นธรรมชาติ */
         }
 
-        /* จัดการหน้าจอสำหรับมือถือ */
+        /* สำหรับหน้าจอมือถือ (ปรับให้เหมาะสมไม่ล้นจอ) */
         @media (max-width: 768px) {
-            .top-bar { padding: 15px 20px; }
-            .logo-area img { height: 45px; }
-            .header-links { display: none; } /* ซ่อนเมนูลิงก์บนมือถือชั่วคราว */
-            .artwork-image { max-width: 80%; }
-            .artwork-text { max-width: 75%; }
-            .bg-line-art { height: 40vh; opacity: 0.4; } /* ให้ลายเส้นบนมือถือจางลงจะได้ไม่กวนรูปหลัก */
-            .bg-clef { left: -40px; }
-            .bg-sax { right: -40px; }
+            .top-bar { height: 70px; padding: 0 20px; }
+            .logo-area img { height: 40px; }
+            .header-links { display: none; }
+            
+            .hero-section { padding-top: 80px; }
+            .artwork-image { max-width: 85%; }
+            .artwork-text { max-width: 80%; }
+            
+            .bg-line-art { top: 70px; height: calc(100vh - 70px); opacity: 0.3; } /* จางลงในมือถือเพื่อให้อ่านง่าย */
+            .bg-clef { left: -30px; }
+            .bg-sax { right: -30px; }
         }
     </style>
 </head>
