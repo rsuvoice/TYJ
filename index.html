@@ -45,7 +45,7 @@
             height: calc(100vh - 85px);
             display: flex;
             flex-direction: column;
-            justify-content: center; /* ในคอมให้อยู่ตรงกลาง */
+            justify-content: center; 
             align-items: center;
             z-index: 1; 
             pointer-events: none; 
@@ -89,17 +89,17 @@
         .bg-clef { left: -20px; }
         .bg-sax { right: -20px; }
 
-        /* 3. SCROLLING LAYER (Video & Content) - เลเยอร์โปร่งแสง */
+        /* 3. SCROLLING LAYER (Video & Content) - เลเยอร์โปร่งใสมาก */
         .scrolling-content-layer {
             position: relative;
             z-index: 10; 
-            margin-top: 100vh; /* ให้เนื้อหาเริ่มที่ด้านล่างจอพอดีในตอนแรก */
+            margin-top: 100vh; 
             
-            /* พื้นหลังแบบโปร่งแสง (กระจกฝ้า) เพื่อให้เห็น Artwork ด้านหลัง */
-            background: rgba(255, 255, 255, 0.45); 
-            backdrop-filter: blur(12px); /* เบลอพื้นหลังนิดๆ ให้อ่านตัวหนังสือออก */
-            -webkit-backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(255, 255, 255, 0.8); /* เส้นขอบบนบางๆ ให้ดูเป็นแผ่นกระจก */
+            /* ปรับให้โปร่งใสมากๆ เห็นพื้นหลังชัดเจน */
+            background: rgba(255, 255, 255, 0.1); /* ลดสีขาวเหลือแค่ 10% */
+            backdrop-filter: blur(3px); /* ลดความเบลอลงมาก เพื่อให้เห็นลวดลายชัดเจน */
+            -webkit-backdrop-filter: blur(3px);
+            border-top: 1px solid rgba(255, 255, 255, 0.4); /* ลดความเข้มของเส้นขอบบน */
             
             width: 100%;
             padding: 80px 20px;
@@ -121,24 +121,25 @@
         }
         .video-wrapper iframe { width: 100%; height: 100%; border: none; }
 
+        /* กล่องข้อความ (ยังคงสีขาวไว้เพื่อให้ตัวหนังสือไม่กลืนกับพื้นหลัง) */
         .future-info {
             max-width: 800px;
             margin-top: 50px;
             text-align: center;
             color: #333333;
             line-height: 1.8;
-            background: rgba(255, 255, 255, 0.7); /* กล่องรองข้อความให้อ่านง่ายขึ้น */
+            background: rgba(255, 255, 255, 0.85); /* ให้พื้นหลังกล่องข้อความทึบขึ้นนิดนึงเพื่อชดเชยเลเยอร์ที่ใสขึ้น */
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
         .future-info h2 {
             margin-top: 0;
-            color: #F26522; /* สีส้มตามตีม */
+            color: #F26522; 
         }
 
         .site-footer {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             width: 100%;
             text-align: center;
@@ -149,9 +150,8 @@
             z-index: 10;
         }
 
-        /* 📱 สำหรับหน้าจอมือถือ (ปรับให้ชิดขอบบน และโชว์เมนู) */
+        /* 📱 สำหรับหน้าจอมือถือ */
         @media (max-width: 768px) {
-            /* ปรับให้แถบเมนูด้านบนเรียงเป็น 2 บรรทัด (Logo บน, เมนูลิงก์ล่าง) */
             .top-bar { 
                 height: auto; 
                 padding: 15px 10px 10px 10px; 
@@ -160,7 +160,7 @@
             }
             .logo-area img { height: 40px; }
             .header-links { 
-                display: flex; /* เอา display: none ออก เพื่อให้เมนูโชว์ */
+                display: flex; 
                 margin-left: 0; 
                 gap: 15px; 
                 flex-wrap: wrap; 
@@ -168,10 +168,9 @@
             }
             .header-links a { font-size: 14px; }
             
-            /* ดัน Artwork ขึ้นไปชิดขอบบนมากขึ้น */
             .fixed-background-layer { 
-                top: 95px; /* เผื่อพื้นที่ให้เมนู 2 บรรทัด */
-                justify-content: flex-start; /* ไม่ให้อยู่ตรงกลางจอ แต่ให้ชิดขอบบนแทน */
+                top: 95px; 
+                justify-content: flex-start; 
                 padding-top: 10px;
             }
             .artwork-image { max-width: 100%; width: 100%; margin-bottom: -15px; } 
@@ -179,7 +178,6 @@
             
             .bg-line-art { opacity: 0.15; }
             
-            /* ดึงเลเยอร์วิดีโอให้ลอยขึ้นมาสูงนิดนึงในมือถือ */
             .scrolling-content-layer { 
                 margin-top: 75vh; 
                 padding: 50px 15px; 
@@ -218,7 +216,7 @@
 
         <div class="future-info">
             <h2>ยินดีต้อนรับสู่ THAI YOUTH JAZZ 2026</h2>
-            <p>พื้นที่รวบรวมข้อมูลกิจกรรม และตารางการฝึกซ้อมของเยาวชนดนตรีแจ๊สทั่วประเทศไทย</p>
+            <p>พื้นที่รวบรวมข้อมูลกิจกรรม และตารางการฝึกซ้อมของเยาวชนดนตรีแจ๊สประเทศไทย</p>
         </div>
 
     </main>
