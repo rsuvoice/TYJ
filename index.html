@@ -15,6 +15,9 @@
             font-family: 'Kanit', sans-serif;
             overflow-x: hidden; 
             color: #333333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* เพื่อให้ Footer อยู่ล่างสุดเสมอ */
         }
 
         /* 1. แถบ Navigation ด้านบน */
@@ -57,13 +60,13 @@
 
         /* 2. พื้นที่ตรงกลางทั้งหมด */
         .hero-section {
+            flex: 1; /* ให้ส่วนนี้ขยายเต็มพื้นที่ตรงกลาง */
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* ให้อยู่สูงขึ้น */
+            justify-content: flex-start; 
             align-items: center;
-            min-height: 100vh; 
             text-align: center;
-            padding: 100px 20px 60px 20px; 
+            padding: 100px 20px 20px 20px; 
             box-sizing: border-box;
             position: relative;
             z-index: 10; 
@@ -74,7 +77,7 @@
             height: auto;
             max-width: 750px; 
             width: 100%;
-            margin-bottom: 25px; 
+            margin-bottom: 0px; 
             animation: floatBobbing 5s ease-in-out infinite;
             filter: drop-shadow(0px 15px 25px rgba(0,0,0,0.08)); 
         }
@@ -90,7 +93,8 @@
             width: 100%;
             max-width: 600px; 
             aspect-ratio: 16 / 9;
-            margin-bottom: 25px; 
+            margin-bottom: 5px; 
+            margin-top: 0px;
             border-radius: 20px; 
             overflow: hidden;
             box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
@@ -108,6 +112,7 @@
             height: auto;
             max-width: 650px; 
             width: 100%;
+            margin-top: 0px; 
             filter: drop-shadow(0px 5px 10px rgba(0,0,0,0.03));
         }
 
@@ -125,6 +130,18 @@
         .bg-clef { left: -10px; }
         .bg-sax { right: -10px; }
 
+        /* 5. Footer (Copyright) */
+        .site-footer {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 13px;
+            color: #999999;
+            z-index: 10;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+
         /* สำหรับหน้าจอมือถือ */
         @media (max-width: 768px) {
             .top-bar { height: 70px; padding: 0 20px; }
@@ -132,13 +149,15 @@
             .header-links { display: none; }
             
             .hero-section { padding-top: 90px; }
-            .artwork-image { max-width: 85%; margin-bottom: 20px;}
-            .video-wrapper { max-width: 90%; margin-bottom: 20px; border-radius: 12px; }
-            .artwork-text { max-width: 80%; }
+            .artwork-image { max-width: 85%; margin-bottom: 0px;}
+            .video-wrapper { max-width: 90%; margin-bottom: 5px; border-radius: 12px; }
+            .artwork-text { max-width: 80%; margin-top: 0px; }
             
             .bg-line-art { top: 70px; height: calc(100vh - 70px); opacity: 0.3; } 
             .bg-clef { left: -30px; }
             .bg-sax { right: -30px; }
+            
+            .site-footer { font-size: 11px; padding: 15px 0; }
         }
     </style>
 </head>
@@ -171,6 +190,10 @@
     <img src="https://drive.google.com/thumbnail?id=1UJ0aNHLuGpgSgx3OQcIKAVXz1Y7M_PBC&sz=w1000" alt="Clef Line Art" class="bg-line-art bg-clef">
 
     <img src="https://drive.google.com/thumbnail?id=1HvU6mYUNvLenvdMTdiQPzN2zeuZV2j2e&sz=w1000" alt="Saxophone Line Art" class="bg-line-art bg-sax">
+
+    <footer class="site-footer">
+        &copy; 2026 Thai Youth Jazz. All Rights Reserved.
+    </footer>
 
 </body>
 </html>
