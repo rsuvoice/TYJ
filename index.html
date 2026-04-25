@@ -17,13 +17,13 @@
             color: #333333;
         }
 
-        /* 1. แถบ Navigation ด้านบน (กำหนดความสูงให้เป๊ะเพื่อคำนวณลายเส้น) */
+        /* 1. แถบ Navigation ด้านบน */
         .top-bar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 85px; /* กำหนดความสูงของแถบเมนูไว้ที่ 85px */
+            height: 85px; 
             padding: 0 40px;
             display: flex;
             align-items: center;
@@ -59,71 +59,84 @@
         .hero-section {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* ให้อยู่สูงขึ้น */
             align-items: center;
             min-height: 100vh; 
             text-align: center;
-            padding: 100px 20px 40px 20px; /* เผื่อระยะแถบเมนูด้านบน */
+            padding: 100px 20px 60px 20px; 
             box-sizing: border-box;
             position: relative;
             z-index: 10; 
         }
 
-        /* Artwork กราฟิก (ขยายให้ใหญ่ขึ้นมาก เพื่อลดช่องว่าง) */
+        /* Artwork กราฟิก */
         .artwork-image {
             height: auto;
-            max-width: 800px; /* ขยายจาก 480px เป็น 800px ให้เด่นเต็มตา */
+            max-width: 750px; 
             width: 100%;
-            margin-bottom: 20px;
+            margin-bottom: 25px; 
             animation: floatBobbing 5s ease-in-out infinite;
             filter: drop-shadow(0px 15px 25px rgba(0,0,0,0.08)); 
         }
 
         @keyframes floatBobbing {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); } /* ให้ลอยขึ้นเยอะกว่าเดิมนิดนึงให้สมดุลกับขนาด */
+            50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
+        }
+
+        /* กล่องใส่วิดีโอ YouTube */
+        .video-wrapper {
+            width: 100%;
+            max-width: 600px; 
+            aspect-ratio: 16 / 9;
+            margin-bottom: 25px; 
+            border-radius: 20px; 
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
+            background-color: #000;
+        }
+        
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* ข้อความจากรูปภาพ (Artwork Text) */
         .artwork-text {
             height: auto;
-            max-width: 650px; /* ขยายข้อความให้ใหญ่ตามรูปภาพด้านบน */
+            max-width: 650px; 
             width: 100%;
-            margin-top: 10px;
             filter: drop-shadow(0px 5px 10px rgba(0,0,0,0.03));
         }
 
-        /* 3 & 4. ลายเส้นซ้าย-ขวา (ปรับให้ชนบน-ล่าง) */
+        /* 3 & 4. ลายเส้นซ้าย-ขวา */
         .bg-line-art {
             position: fixed;
-            top: 85px; /* เริ่มต้นที่ใต้ขอบแถบเมนูด้านบนพอดี (ชนขอบ) */
-            height: calc(100vh - 85px); /* ลากยาวลงมาจนสุดขอบจอด้านล่างพอดี (ชนขอบ) */
+            top: 85px; 
+            height: calc(100vh - 85px); 
             z-index: 1; 
             pointer-events: none; 
             opacity: 0.95;
-            object-fit: contain; /* ป้องกันไม่ให้รูปลายเส้นถูกบีบหรือยืดเสียทรง */
+            object-fit: contain; 
         }
         
-        .bg-clef {
-            left: -10px; /* ดึงเข้าขอบซ้ายนิดหน่อยให้ดูเป็นธรรมชาติ */
-        }
-        
-        .bg-sax {
-            right: -10px; /* ดึงเข้าขอบขวานิดหน่อยให้ดูเป็นธรรมชาติ */
-        }
+        .bg-clef { left: -10px; }
+        .bg-sax { right: -10px; }
 
-        /* สำหรับหน้าจอมือถือ (ปรับให้เหมาะสมไม่ล้นจอ) */
+        /* สำหรับหน้าจอมือถือ */
         @media (max-width: 768px) {
             .top-bar { height: 70px; padding: 0 20px; }
             .logo-area img { height: 40px; }
             .header-links { display: none; }
             
-            .hero-section { padding-top: 80px; }
-            .artwork-image { max-width: 85%; }
+            .hero-section { padding-top: 90px; }
+            .artwork-image { max-width: 85%; margin-bottom: 20px;}
+            .video-wrapper { max-width: 90%; margin-bottom: 20px; border-radius: 12px; }
             .artwork-text { max-width: 80%; }
             
-            .bg-line-art { top: 70px; height: calc(100vh - 70px); opacity: 0.3; } /* จางลงในมือถือเพื่อให้อ่านง่าย */
+            .bg-line-art { top: 70px; height: calc(100vh - 70px); opacity: 0.3; } 
             .bg-clef { left: -30px; }
             .bg-sax { right: -30px; }
         }
@@ -146,6 +159,10 @@
     <main class="hero-section">
         
         <img src="https://drive.google.com/thumbnail?id=1PywfABYVYRgwqHpP6hIFKrtfWoeYxLcd&sz=w1000" alt="Thai Youth Jazz Artwork" class="artwork-image">
+
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/I98NphahYjo?rel=0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
 
         <img src="https://drive.google.com/thumbnail?id=1CHSf4m6TiUQJs4zukSYYROwdpqSf8xjD&sz=w1000" alt="Thai Youth Jazz Text" class="artwork-text">
 
