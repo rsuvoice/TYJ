@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TYJ - รายชื่อนักดนตรี</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="top-bar">
+        <div class="logo-area"><img src="https://drive.google.com/thumbnail?id=1xHurMGkukvAQUgRI1mrY2X0maJ2AYFeo&sz=w1000"></div>
+        <nav class="header-links">
+            <a href="index.html">หน้าแรก</a>
+            <a href="schedule.html">ตารางกิจกรรม</a>
+            <a href="musicians.html" class="active">รายชื่อนักดนตรี</a>
+            <a href="info.html">ข้อมูลเพิ่มเติม</a>
+        </nav>
+    </header>
+    <div class="fixed-background-layer">
+        <img src="https://drive.google.com/thumbnail?id=1LexJscLQin_eYUuxs0XkVC93Amoh0dcF&sz=w1000" class="artwork-image">
+    </div>
+    <main class="scrolling-content-layer">
+        <div class="content-card">
+            <h2 style="color:#F26522;">รายชื่อนักดนตรี (Musicians)</h2>
+            <p>เลือกปีที่ต้องการแสดงรายชื่อ:</p>
+            
+            <select class="year-selector" id="yearDrop">
+                <option value="2026">นักดนตรีรุ่นปี 2026</option>
+                <option value="2025">นักดนตรีรุ่นปี 2025</option>
+            </select>
+
+            <div id="list-container" style="margin-top:20px;">
+                <p>โครงสร้างรายชื่อนักดนตรี...</p>
+            </div>
+        </div>
+        <footer class="site-footer">&copy; 2026 Thai Youth Jazz.</footer>
+    </main>
+</body>
+</html>
