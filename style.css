@@ -1,0 +1,70 @@
+/* style.css */
+body {
+    margin: 0; padding: 0; background-color: #ffffff;
+    font-family: 'Kanit', sans-serif; overflow-x: hidden; color: #333333;
+}
+
+/* Header */
+.top-bar {
+    position: fixed; top: 0; left: 0; width: 100%; height: 85px; 
+    padding: 0 40px; display: flex; align-items: center; z-index: 3000; 
+    background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+    box-sizing: border-box; border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.logo-area img { height: 55px; }
+.header-links { margin-left: auto; display: flex; gap: 25px; }
+.header-links a { 
+    text-decoration: none; color: #444444; font-size: 15px; 
+    font-weight: 500; transition: color 0.3s;
+}
+.header-links a:hover, .header-links a.active { color: #F26522; }
+
+/* Fixed Background Artwork */
+.fixed-background-layer {
+    position: fixed; top: 85px; left: 0; width: 100%;
+    height: calc(100vh - 85px); display: flex; flex-direction: column;
+    justify-content: center; align-items: center; z-index: 1; 
+    pointer-events: none; text-align: center; padding: 20px; box-sizing: border-box;
+}
+.artwork-image {
+    width: 100%; max-width: 1200px; max-height: 75vh;  
+    object-fit: contain; animation: floatBobbing 5s ease-in-out infinite;
+}
+@keyframes floatBobbing {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Scrolling Content */
+.scrolling-content-layer {
+    position: relative; z-index: 10; margin-top: 100vh; 
+    background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px);
+    width: 100%; padding: 80px 20px; box-sizing: border-box;
+    display: flex; flex-direction: column; align-items: center; min-height: 100vh;
+}
+.content-card {
+    background: rgba(255, 255, 255, 0.85); max-width: 900px; width: 100%;
+    padding: 40px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    text-align: center; margin-bottom: 50px;
+}
+
+/* Dropdown สำหรับหน้านักดนตรี */
+.year-selector {
+    padding: 12px 20px; font-size: 16px; font-family: 'Kanit';
+    border-radius: 10px; border: 2px solid #F26522; background: white;
+    margin-bottom: 20px; cursor: pointer; outline: none;
+}
+
+.site-footer {
+    padding: 30px 0; color: #666; font-size: 13px; text-align: center;
+    background: rgba(255, 255, 255, 0.95); width: 100%; margin-top: auto;
+}
+
+/* Tablet & Mobile */
+@media (max-width: 768px) {
+    .top-bar { height: auto; padding: 15px; flex-direction: column; gap: 10px; }
+    .header-links { gap: 12px; flex-wrap: wrap; justify-content: center; margin-left: 0; }
+    .fixed-background-layer { top: 110px; justify-content: flex-start; padding-top: 30px; }
+    .artwork-image { max-height: 50vh; }
+    .scrolling-content-layer { margin-top: 75vh; }
+}
