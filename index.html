@@ -62,7 +62,7 @@
             max-height: 70vh;  
             object-fit: contain; 
             
-            /* 🛠 ปรับตรงนี้: เปลี่ยนจากลบเยอะๆ เป็นค่าบวกเล็กน้อยเพื่อดันข้อความลง */
+            /* ปรับตรงนี้: เปลี่ยนจากลบเยอะๆ เป็นค่าบวกเล็กน้อยเพื่อดันข้อความลง */
             margin-bottom: 10px; 
             
             animation: floatBobbing 5s ease-in-out infinite;
@@ -150,7 +150,7 @@
             z-index: 10;
         }
 
-        /* 📱 สำหรับมือถือ */
+        /* 📱 สำหรับมือถือ: อัปเดตใหม่ตามบรีฟค่า 📱 */
         @media (max-width: 768px) {
             .top-bar { 
                 height: auto; 
@@ -171,10 +171,25 @@
             .fixed-background-layer { 
                 top: 95px; 
                 justify-content: flex-start; 
-                padding: 10px 10px 10px 10px; 
+                
+                /* ปรับตรงนี้: ขยับทุกอย่างลงมาด้านล่างอีกนิด (padding-top) */
+                padding: 25px 10px 10px 10px; 
             }
-            .artwork-image { max-height: none; max-width: 100%; width: 100%; margin-bottom: 0px; } 
-            .artwork-text { max-height: none; max-width: 90%; }
+            
+            .artwork-image { 
+                max-height: none; 
+                max-width: 100%; 
+                width: 100%; 
+                margin-bottom: 0px; 
+            } 
+            
+            /* ปรับตรงนี้: ทำให้ตัวหนังสือเล็กลงนิดนึง (font-size) และขยับลงมา (margin-top) */
+            .artwork-text { 
+                max-height: none; 
+                width: 80%; /* บีบให้แคบลงนิดหน่อยช่วยให้ดูเล็กลง */
+                font-size: 80%; /* ทำให้ฟอนต์เล็กลง */
+                margin-top: 10px; /* เพิ่มระยะห่างให้ขยับลงมา */
+            }
             
             .bg-line-art { opacity: 0.15; }
             
