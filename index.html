@@ -3,203 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thai Youth Jazz (TYJ) - โครงการส่งเสริมเยาวชนด้านดนตรี</title>
+    <title>TYJ - หน้าแรก</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-            font-family: 'Kanit', sans-serif;
-            overflow-x: hidden;
-            color: #333333;
-        }
-
-        /* 1. Header (Fixed Top) */
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 85px; 
-            padding: 0 40px;
-            display: flex;
-            align-items: center;
-            z-index: 2000; 
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-sizing: border-box;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-        .logo-area img { height: 55px; display: block; }
-        .header-links { margin-left: 50px; display: flex; gap: 30px; }
-        .header-links a { text-decoration: none; color: #444444; font-size: 16px; font-weight: 500; transition: color 0.3s; }
-        .header-links a:hover { color: #F26522; }
-
-        /* 2. BACKGROUND LAYER (Fixed Artwork) */
-        .fixed-background-layer {
-            position: fixed;
-            top: 85px; 
-            left: 0;
-            width: 100%;
-            height: calc(100vh - 85px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center; 
-            align-items: center;
-            z-index: 1; 
-            pointer-events: none; 
-            text-align: center;
-            padding: 10px 10px 50px 10px; 
-            box-sizing: border-box;
-        }
-
-        /* การตั้งค่าสำหรับ Desktop / MacBook 13 นิ้ว */
-        .artwork-image {
-            width: 100%; 
-            max-width: 1250px; 
-            max-height: 70vh;  
-            object-fit: contain; 
-            
-            /* ปรับตรงนี้: เปลี่ยนจากลบเยอะๆ เป็นค่าบวกเล็กน้อยเพื่อดันข้อความลง */
-            margin-bottom: 10px; 
-            
-            animation: floatBobbing 5s ease-in-out infinite;
-            filter: drop-shadow(0px 15px 30px rgba(0,0,0,0.1));
-        }
-
-        .artwork-text {
-            width: 100%;
-            max-width: 950px;  
-            max-height: 18vh; 
-            object-fit: contain;
-            margin-top: 0;
-        }
-
-        @keyframes floatBobbing {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* ลายเส้นประกอบซ้ายขวา */
-        .bg-line-art {
-            position: fixed;
-            top: 85px;
-            height: calc(100vh - 85px);
-            z-index: 0; 
-            pointer-events: none;
-            opacity: 0.8;
-            object-fit: contain;
-        }
-        .bg-clef { left: -30px; }
-        .bg-sax { right: -30px; }
-
-        /* 3. SCROLLING LAYER (เนื้อหาโปร่งใส) */
-        .scrolling-content-layer {
-            position: relative;
-            z-index: 10; 
-            margin-top: 100vh; 
-            background: rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(4px); 
-            -webkit-backdrop-filter: blur(4px);
-            border-top: 1px solid rgba(255, 255, 255, 0.4); 
-            width: 100%;
-            padding: 80px 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 0 -10px 40px rgba(0,0,0,0.08); 
-        }
-
-        .video-wrapper {
-            width: 100%;
-            max-width: 800px; 
-            aspect-ratio: 16 / 9;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-            background-color: #000;
-        }
-        .video-wrapper iframe { width: 100%; height: 100%; border: none; }
-
-        .future-info {
-            max-width: 800px;
-            margin-top: 50px;
-            text-align: center;
-            color: #333333;
-            line-height: 1.8;
-            background: rgba(255, 255, 255, 0.85); 
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-        .future-info h2 { margin-top: 0; color: #F26522; }
-
-        .site-footer {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            width: 100%;
-            text-align: center;
-            padding: 30px 0;
-            color: #666666;
-            font-size: 13px;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* 📱 สำหรับมือถือ: อัปเดตใหม่ตามบรีฟค่า 📱 */
-        @media (max-width: 768px) {
-            .top-bar { 
-                height: auto; 
-                padding: 15px 10px 10px 10px; 
-                flex-direction: column; 
-                gap: 12px;
-            }
-            .logo-area img { height: 40px; }
-            .header-links { 
-                display: flex; 
-                margin-left: 0; 
-                gap: 15px; 
-                flex-wrap: wrap; 
-                justify-content: center; 
-            }
-            .header-links a { font-size: 14px; }
-            
-            .fixed-background-layer { 
-                top: 95px; 
-                justify-content: flex-start; 
-                
-                /* ปรับตรงนี้: ขยับทุกอย่างลงมาด้านล่างอีกนิด (padding-top) */
-                padding: 25px 10px 10px 10px; 
-            }
-            
-            .artwork-image { 
-                max-height: none; 
-                max-width: 100%; 
-                width: 100%; 
-                margin-bottom: 0px; 
-            } 
-            
-            /* ปรับตรงนี้: ทำให้ตัวหนังสือเล็กลงนิดนึง (font-size) และขยับลงมา (margin-top) */
-            .artwork-text { 
-                max-height: none; 
-                width: 80%; /* บีบให้แคบลงนิดหน่อยช่วยให้ดูเล็กลง */
-                font-size: 80%; /* ทำให้ฟอนต์เล็กลง */
-                margin-top: 10px; /* เพิ่มระยะห่างให้ขยับลงมา */
-            }
-            
-            .bg-line-art { opacity: 0.15; }
-            
-            .scrolling-content-layer { 
-                margin-top: 75vh; 
-                padding: 50px 15px; 
-            }
-            .future-info { padding: 20px; font-size: 15px; margin-top: 30px; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -208,35 +14,31 @@
             <img src="https://drive.google.com/thumbnail?id=1xHurMGkukvAQUgRI1mrY2X0maJ2AYFeo&sz=w1000" alt="TYJ Logo">
         </div>
         <nav class="header-links">
-            <a href="#">หน้าแรก</a>
-            <a href="#">ตารางกิจกรรม</a>
-            <a href="#">รายชื่อศิลปิน</a>
-            <a href="#">ติดต่อเรา</a>
+            <a href="index.html" class="active">หน้าแรก</a>
+            <a href="schedule.html">ตารางกิจกรรม</a>
+            <a href="musicians.html">รายชื่อนักดนตรี</a>
+            <a href="info.html">ข้อมูลเพิ่มเติม</a>
         </nav>
     </header>
 
     <div class="fixed-background-layer">
         <img src="https://drive.google.com/thumbnail?id=1cjcp1nNgeNCN9ZhS5-okuFFI844mr_WS&sz=w1000" class="artwork-image">
-        <img src="https://drive.google.com/thumbnail?id=1CHSf4m6TiUQJs4zukSYYROwdpqSf8xjD&sz=w1000" class="artwork-text">
     </div>
 
-    <img src="https://drive.google.com/thumbnail?id=1UJ0aNHLuGpgSgx3OQcIKAVXz1Y7M_PBC&sz=w1000" class="bg-line-art bg-clef">
-    <img src="https://drive.google.com/thumbnail?id=1HvU6mYUNvLenvdMTdiQPzN2zeuZV2j2e&sz=w1000" class="bg-line-art bg-sax">
-
     <main class="scrolling-content-layer">
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/I98NphahYjo?rel=0" allowfullscreen></iframe>
-        </div>
-        
-        <div class="future-info">
-            <h2>ยินดีต้อนรับสู่ THAI YOUTH JAZZ 2026</h2>
+        <div class="content-card">
+            <div style="width:100%; aspect-ratio: 16/9; border-radius:15px; overflow:hidden; background:#000;">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/I98NphahYjo?rel=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            
+            <h2 style="color:#F26522; margin-top:30px;">ยินดีต้อนรับสู่ THAI YOUTH JAZZ 2026</h2>
             <p>พื้นที่รวบรวมข้อมูลกิจกรรม และตารางการฝึกซ้อมของเยาวชนดนตรีแจ๊สทั่วประเทศไทย</p>
         </div>
-    </main>
 
-    <footer class="site-footer">
-        &copy; 2026 Thai Youth Jazz. All Rights Reserved.
-    </footer>
+        <footer class="site-footer">
+            &copy; 2026 Thai Youth Jazz. All Rights Reserved.
+        </footer>
+    </main>
 
 </body>
 </html>
